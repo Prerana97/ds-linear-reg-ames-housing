@@ -63,18 +63,6 @@ app.layout = html.Div(children=[
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Data Source", href=sourceurl),
-    html.H3('Predicted Home Value in 2 years:'),
-               
-                html.Button(children='Submit', id='submit-val', n_clicks=0,
-                                style={
-                                'background-color': 'red',
-                                'color': 'white',
-                                'margin-left': '5px',
-                                'verticalAlign': 'center',
-                                'horizontalAlign': 'center'}
-                                ),
-                html.H3('Predicted Home Value in 2 years:'),
-                html.Div(id='Results1')
     ]
 )
 
@@ -91,17 +79,7 @@ app.layout = html.Div(children=[
     State(component_id='LargeNeighborhood', component_property='value')
 
 )
-@app.callback(
-    Output(component_id='Results1', component_property='children'),
-    Input(component_id='submit-val', component_property='n_clicks'),
-    State(component_id='YearBuilt', component_property='value'),
-    State(component_id='Bathrooms', component_property='value'),
-    State(component_id='BedroomAbvGr', component_property='value'),
-    State(component_id='TotalSF', component_property='value'),
-    State(component_id='SingleFam', component_property='value'),
-    State(component_id='LargeNeighborhood', component_property='value')
 
-)
 def ames_lr_function(clicks, YearBuilt,Bathrooms,BedroomAbvGr,TotalSF,SingleFam,LargeNeighborhood):
     if clicks==0:
         return "waiting for inputs"
