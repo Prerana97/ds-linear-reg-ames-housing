@@ -48,7 +48,8 @@ app.layout = html.Div(children=[
                                 'verticalAlign': 'center',
                                 'horizontalAlign': 'center'}
                                 ),
-                 html.Div(id='Results')
+                html.H3('Predicted Home Value:'),
+                html.Div(id='Results')
             ], className='four columns')
         ], className='twelve columns',
     ),
@@ -65,6 +66,7 @@ app.layout = html.Div(children=[
     html.A("Data Source", href=sourceurl),
     ]
 )
+
 
 
 ######### Define Callback
