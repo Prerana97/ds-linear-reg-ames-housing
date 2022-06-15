@@ -48,7 +48,7 @@ app.layout = html.Div(children=[
                                 'verticalAlign': 'center',
                                 'horizontalAlign': 'center'}
                                 ),
-                 html.Div(id='Results'),
+                 html.Div(id='Results')
             ], className='four columns')
         ], className='twelve columns',
     ),
