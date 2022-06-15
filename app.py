@@ -48,6 +48,14 @@ app.layout = html.Div(children=[
                                 'verticalAlign': 'center',
                                 'horizontalAlign': 'center'}
                                 ),
+                html.Button(children='Submit', id='submit-val', n_clicks=0,
+                                style={
+                                'background-color': 'red',
+                                'color': 'white',
+                                'margin-left': '5px',
+                                'verticalAlign': 'center',
+                                'horizontalAlign': 'center'}
+                                ),
                 html.H3('Predicted Home Value:'),
                 html.Div(id='Results')
             ], className='four columns')
