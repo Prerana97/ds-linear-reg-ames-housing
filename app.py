@@ -48,8 +48,7 @@ app.layout = html.Div(children=[
                                 'verticalAlign': 'center',
                                 'horizontalAlign': 'center'}
                                 ),
-                html.H3('Predicted Home Value:'),
-                html.Div(id='Results')
+                 html.Div(id='Results'),
             ], className='four columns')
         ], className='twelve columns',
     ),
@@ -64,6 +63,18 @@ app.layout = html.Div(children=[
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Data Source", href=sourceurl),
+    html.H3('Predicted Home Value in 2 years:'),
+               
+                html.Button(children='Submit', id='submit-val', n_clicks=0,
+                                style={
+                                'background-color': 'red',
+                                'color': 'white',
+                                'margin-left': '5px',
+                                'verticalAlign': 'center',
+                                'horizontalAlign': 'center'}
+                                ),
+                html.H3('Predicted Home Value in 2 years:'),
+                html.Div(id='Results1')
     ]
 )
 
@@ -71,6 +82,17 @@ app.layout = html.Div(children=[
 ######### Define Callback
 @app.callback(
     Output(component_id='Results', component_property='children'),
+    Input(component_id='submit-val', component_property='n_clicks'),
+    State(component_id='YearBuilt', component_property='value'),
+    State(component_id='Bathrooms', component_property='value'),
+    State(component_id='BedroomAbvGr', component_property='value'),
+    State(component_id='TotalSF', component_property='value'),
+    State(component_id='SingleFam', component_property='value'),
+    State(component_id='LargeNeighborhood', component_property='value')
+
+)
+@app.callback(
+    Output(component_id='Results1', component_property='children'),
     Input(component_id='submit-val', component_property='n_clicks'),
     State(component_id='YearBuilt', component_property='value'),
     State(component_id='Bathrooms', component_property='value'),
@@ -88,6 +110,13 @@ def ames_lr_function(clicks, YearBuilt,Bathrooms,BedroomAbvGr,TotalSF,SingleFam,
         formatted_y = "${:,.2f}".format(y[0])
         return formatted_y
 
+def ames_lr2_function(clicks, YearBuilt,Bathrooms,BedroomAbvGr,TotalSF,SingleFam,LargeNeighborhood):
+    if clicks==0:
+        return "waiting for inputs"
+    else:
+        y = [-1360501.3809 + 504.4287*YearBuilt + 13738.4775*Bathrooms + -7583.1712*BedroomAbvGr + 49.824*TotalSF+ 25282.091*SingleFam+ -6637.2636*LargeNeighborhood]
+        formatted_y = "${:,.2f}".format(y[0])
+        return formatted_y
 
 
 ############ Deploy
