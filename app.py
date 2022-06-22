@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output, State
 
 ########### Define your variables ######
 myheading1='Predicting Home Sale Prices in Ames, Iowa'
-image1='ames_welcome.jpeg'
+image1='ames.jpeg'
 tabtitle = 'Ames Housing'
 sourceurl = 'http://jse.amstat.org/v19n3/decock.pdf'
 githublink = 'https://github.com/Prerana97/ds-linear-reg-ames-housing'
